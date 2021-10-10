@@ -2,7 +2,7 @@
 
 Faraday is an educational website for financial markets where people can learn about stocks and practice on an online simulator. They can also participate in real-time trading contests as well as on modified or historical data.
 
-<img src="./stonk1.png" alt="drawing" width="70%" class="center"/>
+<img src="https://cdn.discordapp.com/attachments/896445146986577960/896778637578227803/stonk1.png" alt="drawing" width="70%" class="center"/>
 
 ### Why Faraday?
 
@@ -35,7 +35,7 @@ Faraday's main aim is to provide a real time stock market simulator with virtual
     A potential add-on to this can be SDK's in the most used programming languages like Python, Javascript, Go etc.
     
 
-<img src="./stonk2.png" alt="drawing" width="70%"/>
+<img src="https://cdn.discordapp.com/attachments/896445146986577960/896778640212254811/stonk2.png" alt="drawing" width="70%"/>
 
 ## Implementation
 
@@ -70,3 +70,9 @@ This version supports:
     - Users can participate in contests
     - Leaderboards
     - Contests can be historical as well as live
+- API access
+    - We also provide real-time as well as historical data via our API
+    - We also allow participants to buy and sell stocks via API itself
+    - This allows users to create and trade using algorithms
+
+<img src="https://cdn.discordapp.com/attachments/896445146986577960/896774543513907210/unknown.png" alt="drawing" width="70%"/>
