@@ -2,7 +2,7 @@
 
 Faraday is an educational website for financial markets where people can learn about stocks and practice on an online simulator. They can also participate in real-time trading contests as well as on modified or historical data.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5915ce73-ae6a-439b-b982-5e4c8b10884b/Untitled.png)
+![Img](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5915ce73-ae6a-439b-b982-5e4c8b10884b/Untitled.png)
 
 ### Why Faraday?
 
@@ -14,8 +14,8 @@ However, Faraday is a lot more than a learning platform, as we ascribe below.
 
 ### What does Faraday offer?
 
-> “What good is it?”
-Faraday replied: “What good is a baby?”
+> “What good is it?”<br/>
+Faraday replied: “What good is a baby?”<br/>
 Or maybe he said: “Soon you will be able to tax it.”
 > 
 
@@ -26,9 +26,9 @@ Faraday's main aim is to provide a real time stock market simulator with virtual
 - Spending time by just trading with virtual money might become boring. So we also let the users compete against each other by offering live contests, where there is only one objective: make a HELL lot of money. The leaderboards in these contests will drive the participants to continuously work harder in building more profitable strategies and spice up their learning process.
 - We further intend to utilize the platform and its active users into creating a community where users can choose to discuss their strategies, ideas and failures on a dedicated forum.
 - We don't want our users to have to manually punch trades everytime by opening the browser, especially the eager programmers who are always looking for ways to automate stuff. For this we also provide the programmers with an API access. What would the API offer them :
-    1. Access to real time data 
-    2. Order placement 
-    3. User's statistics like their current cash, holdings etc.
+    - Access to real time data 
+    - Order placement 
+    - User's statistics like their current cash, holdings etc.
     
     This automation means that users can now program their strategies. This feature would be very beneficial given the large amount of people that are now turning towards algorithmic trading. 
     
