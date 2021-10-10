@@ -75,4 +75,4 @@ This version supports:
     - We also allow participants to buy and sell stocks via API itself
     - This allows users to create and trade using algorithms
 
-<img src="https://cdn.discordapp.com/attachments/896445146986577960/896779887329820712/unknown.png" alt="drawing" height="50%"/>
+<img src="https://cdn.discordapp.com/attachments/896445146986577960/896779887329820712/unknown.png" alt="drawing" height="20%"/>
