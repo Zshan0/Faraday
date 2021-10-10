@@ -11,30 +11,27 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Context from "../../Context.js"
-
 import { useHistory } from "react-router-dom"
-const theme = createTheme();
+import { accordionSummaryClasses } from '@mui/material';
+import axios from 'axios';
 
+const theme = createTheme();
 const validateRegister = async (props) => {
-  return {
-    'response': 'success'
-  }
+  const res = await axios.post('/user/signup', {
+    'username':props.username,
+    'password':props.password
+  });
+  return res
 }
 
 const Register = () => {
     let history = useHistory();
-    const [fname, setFName] = useState("");
-    const [lname, setLName] = useState("");
-    const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const {store, setStore} = useContext(Context);
 
     const newUser = {
-        fname,
-        lname,
-        email,
         username,
         password
     };
@@ -53,13 +50,12 @@ const Register = () => {
     };
     // Send data to the backend and await for the query
     const responseData = await validateRegister(obj);
-    if(responseData.response == 'success') {
+    if(responseData.data.success) {
       // add props to the details or use context or local storage to keep track of user
+      localStorage.setItem("user", obj.username);
       history.push('home/learning');
-    } else if(responseData.response == 'used email') {
-      console.log("Email used, try again");
     } else {
-      console.log("error occured, please try again");
+      alert("Usernam used, try again");
     }
   };
 
@@ -75,45 +71,14 @@ const Register = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Typography component="h1" variant="h1">
+            Faraday
+          </Typography>
           <Typography component="h1" variant="h5">
-            Sign up
+            Register
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="fname"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="lname"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required

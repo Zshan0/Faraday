@@ -26,6 +26,9 @@ import LeaderBoard from './LeaderBoard';
 import * as data from './RELIANCE.json';
 import ReactApexCharts from 'react-apexcharts'
 import moment from 'moment'
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { getLeaderBoard } from './getLeaderboard';
 
@@ -132,6 +135,18 @@ const chartStyle = {
     mt: 5
 }
 
+const somestyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+}
+
 function ModalCustom({ open, handleClose, row, data}) {
     if (!open) {
         return(
@@ -140,8 +155,30 @@ function ModalCustom({ open, handleClose, row, data}) {
         );
     }
 
+    
+    const sendAlerts = (obj) => {
+        if (obj.buy > 0) {
+          alert("Bought shares: " + obj.buy);
+        }
+        if (obj.sell > 0) {
+          alert("Sold shares: " + obj.sell);
+        }
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const obj = {
+          buy: parseFloat(data.get('buy')),
+          sell: parseFloat(data.get('sell')),
+        };
+        console.log(obj);
+        sendAlerts(obj);
+    }
 
     const series = [{ data: data }]
+    let buy;
+    let sell;
     const options = {
         chart: {
             type: 'candlestick',
@@ -176,8 +213,40 @@ function ModalCustom({ open, handleClose, row, data}) {
                                 {row.name}
                             </Typography>
                         <Box sx={chartStyle} >
-                        <ReactApexCharts options={options} series={series} type="candlestick" height={450} />
+                          <ReactApexCharts options={options} series={series} type="candlestick" height={450} />
                         </Box>
+                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                        <TextField
+                          margin="normal"
+                          required
+                          fullWidth
+                          id="buy"
+                          label="Buy Quantity"
+                          name="buy"
+                          autoComplete="buy"
+                          autoFocus
+                          type="number"
+                        />
+                        <TextField
+                          margin="normal"
+                          required
+                          fullWidth
+                          id="sell"
+                          label="Sell Quantity"
+                          name="sell"
+                          autoComplete="sell"
+                          autoFocus
+                          type="number"
+                        />
+                        <Button
+                          type="submit"
+                          fullWidth
+                          variant="contained"
+                          sx={{ mt: 3, mb: 2 }}
+                        >
+                          Place Order
+                        </Button>
+                      </Box>  
                     </Box>
                 </Fade>
             </Modal>
@@ -186,6 +255,7 @@ function ModalCustom({ open, handleClose, row, data}) {
 }
 
 function ModalLeaderBoard({ open, handleClose, leaderBoardList}) {
+
     return (
         <div>
             <Modal

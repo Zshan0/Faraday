@@ -1,6 +1,7 @@
 from flask import Flask
 from faraday.config import Config
 from flask_pymongo import PyMongo
+from flask_cors import CORS, cross_origin
 
 db = None
 
@@ -10,6 +11,8 @@ def create_app(config_class=Config):
 
     # Create flask app object
     app = Flask(__name__)
+    CORS(app)
+    # app.config["CORS_HEADERS"] = 'Content-Type'
     app.config["MONGO_URI"] = Config.CONNECTION_STRING
 
     # Tie with database

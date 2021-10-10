@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -17,19 +17,19 @@ import { Redirect } from "react-router-dom"
 const cards = [
     {
         "title": "Candle Plots",
-        "image": "https://source.unsplash.com/random",
+        "image": "https://miro.medium.com/max/1400/1*5hks5c7coEa_TvXSLKfu2A.jpeg",
         "desc": "Learn how to read candleplots",
         "url": "/home/page/candleplots"
     },
     {
         "title": "Trading Psychology",
-        "image": "https://source.unsplash.com/random",
+        "image": "https://qph.fs.quoracdn.net/main-qimg-13d0a1107423fce4a2029892dae8ffbc",
         "desc": "This is a short description for the module.",
-        "url": "/home/page/tradingpsychology"
+        "url": "/home/page/tradingpsych"
     },
     {
       "title": "Mathematics and Algorithm",
-      "image": "https://source.unsplash.com/random",
+      "image": "https://miro.medium.com/max/1400/0*iiTB1dEpyQXWUgxA",
       "desc": "Thoughts about how different professions approach an algorithm",
       "url": "/home/page/mathematics"
     },
@@ -40,6 +40,13 @@ const theme = createTheme();
 export default function Learning() {
 
   const {store, setStore} = useContext(Context);
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    const userRes = localStorage.getItem('user');
+    setUser(userRes);
+  });
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -66,6 +73,9 @@ export default function Learning() {
               gutterBottom
             >
                 Learning Modules
+            </Typography>
+            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+              Welcome {user}!
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               Below is a collection which will help you learn all about Stock Trading and the Math and CS involved.

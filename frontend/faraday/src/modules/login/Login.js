@@ -20,12 +20,6 @@ import { useHistory } from "react-router-dom"
 
 const theme = createTheme();
 
-const validateLogin = async (props) => {
-  return {
-    'response': 'success'
-  }
-}
-
 const Login = () => {
     let history = useHistory();
     const [username, setUsername] = useState("");
@@ -38,30 +32,24 @@ const Login = () => {
         password
     };
     
-
-    async function pushData() {
+    async function pushData(obj) {
         try {
-            let res = await axios.post("http://localhost:5000/users/login", {
-                username: userData.username,
-                password: userData.password
+            let res = await axios.post("/user/login", {
+                username: obj.username,
+                password: obj.password
             });
-            if (res.status == 200) {
+            if (res.data.success) {
                 setErrors({});
                 setUsername("");
                 setPassword("");
-                localStorage.setItem("token", res.data.token);
-                setStore({
-                    token: res.data.token,
-                    user: res.data.user
-                });
-                console.log()
+                localStorage.setItem("user", obj.username);
+                setStore({ user: res.data.username });
+                history.push('/home/learning');
             } else if (res.data.username) {
-                setErrors({ username: res.data.username });
-            } else if (res.data.email) {
-                setErrors({ password: res.data.password });
-            } else {
-                setErrors({ someError: res.data.someError });
-            }
+              alert(res.data.username);
+            } else if (res.data.password) {
+              alert(res.data.password);
+            }         
         } catch (err) {
             console.log(err);
         }
@@ -74,18 +62,8 @@ const Login = () => {
           username: data.get('username'),
           password: data.get('password'),
         };
+        pushData(obj);
         // Send data to the backend and await for the query
-        const responseData = await validateLogin(obj);
-        if(responseData.response == 'success') {
-          // add props to the details or use context or local storage to keep track of user
-          history.push('home/learning');
-        } else if(responseData.response == 'not found') {
-          console.log("account not found");
-        } else if(responseData.response == 'incorrect password') {
-          console.log("incorrect password");
-        } else {
-          console.log("error occured, please try again");
-        }
     }
 
     return (
@@ -100,9 +78,9 @@ const Login = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
+            <Typography component="h1" variant="h1">
+              Faraday
+            </Typography>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>

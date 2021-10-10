@@ -6,6 +6,7 @@ from pymongo.collection import ReturnDocument
 import flask
 from faraday.config import Parameters as PARAMS
 from faraday import db
+from flask_cors import CORS, cross_origin
 
 user = Blueprint("user", __name__)
 
@@ -13,14 +14,15 @@ user = Blueprint("user", __name__)
 
 
 @user.route('/user/login', methods=["POST"])
+# @cross_origin
 def login():
     users = db.users.find()
     for user in users:
         if user["username"] == request.json["username"]:
             if user["password"] == request.json["password"]:
                 return flask.jsonify(success=True, message="Success")
-            return flask.jsonify(success=False, message="Wrong Password")
-    return flask.jsonify(success=False, message="No such username found")
+            return flask.jsonify(success=False, password="Wrong Password")
+    return flask.jsonify(success=False, username="No such username found")
 
 # Signup with unique username
 
@@ -48,6 +50,12 @@ def enter_contest(username, contest_id):
     contests = db.users.find_one({'username': username})['contests']
     if contests == None:
         return flask.jsonify(sucess=False, message="No user found")
+    
+    check_user = [cont for cont in contests if cont['contest_id'] == contest_id]
+
+    if len(check_user):
+        return flask.jsonify(sucess=False, message="User already added to contest")
+    
     contests.append({
         'contest_id': contest_id,
         'cash': PARAMS.DEFAULT_CASH,

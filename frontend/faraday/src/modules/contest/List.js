@@ -15,12 +15,12 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 
-const contests = [ ];
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'contestName', headerName: 'Contest Name', width: 180 },
+  { field: 'name', headerName: 'Contest Name', width: 180 },
   { field: 'start', headerName: 'Start Time', width: 180 },
   { field: 'end', headerName: 'End time', width: 180 },
   { field: 'participants', headerName: 'Participants', width: 180 },
@@ -48,10 +48,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function createData(entry) {
-    var startDate = new Date(entry.start);
+    var startDate = new Date(entry.start * 1000);
     var startString = startDate.toLocaleString('en-US')
 
-    var endDate = new Date(entry.end);
+    var endDate = new Date(entry.end * 1000);
     var endString = endDate.toLocaleString('en-US')
     return {
         ...entry,
@@ -74,27 +74,9 @@ const style = {
 
 
 
-export default function List() {
+export default function List({contests, username}) {
     let history = useHistory();
-    const entries = [
-        { 
-            id: 1, 
-            contestName: 'Warren Buffet',
-            start: 1633822992222, 
-            end: 1633822992222, 
-            participants: '100',
-            url: '/home/contests/warrenbuffet'
-        },
-        { 
-            id: 2,
-            contestName: 'Elon Musk', 
-            start: 2633822992222, 
-            end: 1633822992222, 
-            participants: '100',
-            url: '/home/contests/elonmusk'
-        }
-    ];
-    const rows = entries.map(createData);
+    const rows = contests.map(createData);
     
     const [open, setOpen] = React.useState(false);
     const [rowModal, setRow] = React.useState({
@@ -118,6 +100,7 @@ export default function List() {
       handleClose={handleClose}
       row={rowModal}
       history={history}
+      username={username}
     />
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -132,7 +115,7 @@ export default function List() {
         <TableBody>
           {rows.map((row) => (
             <StyledTableRow key={row.name} onClick = {() => {handleClick(row)}}>
-              <StyledTableCell>{row.contestName}</StyledTableCell>
+              <StyledTableCell>{row.name}</StyledTableCell>
               <StyledTableCell align="right">{row.start}</StyledTableCell>
               <StyledTableCell align="right">{row.end}</StyledTableCell>
               <StyledTableCell align="right">{row.participants}</StyledTableCell>
@@ -145,11 +128,15 @@ export default function List() {
     );
 }
 
-function ModalCustom({ open, handleClose, row, history}) {
+function ModalCustom({ open, handleClose, row, history, username}) {
 
 
-    const handleRedirect = () => {
-        history.push(row.url);
+    const handleRedirect = async () => {
+        const st =  '/user/enter_contest/' + username + '/' + row.contest_id;
+        const res = await axios.post(st);
+        console.log(res);
+        const pt = '/home/contests/' + row.contest_id;
+        history.push(pt);
     };
 
   return (

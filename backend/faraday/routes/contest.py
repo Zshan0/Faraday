@@ -39,7 +39,7 @@ def add_contest():
     return flask.jsonify(success=True, message="Contest Added")
 
 
-@contest.route('/contest/fetch_all', methods=["GET"])
+@contest.route('/contest/fetch_all', methods=["POST"])
 def fetch_contests():
     contests = db.contests.find()
     ret_contests = []

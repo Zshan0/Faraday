@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -6,11 +6,30 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import List from './List';
+import axios from "axios";
 
-const contests = [ ];
 const theme = createTheme();
 
 export default function Contest() {
+  const [user, setUser] = useState('');
+  const [contests, setContests] = useState([]);
+  const [tempFlag, setTempFlag] = useState(false);
+
+  useEffect(() => {
+    const userRes = localStorage.getItem('user');
+    setUser(userRes);
+
+    if(!tempFlag) {
+      async function fetchAPI() {
+        axios.post('/contest/fetch_all').then(x => {
+          console.log(x);
+          setContests(x.data.message);
+          setTempFlag(true);
+        });
+      }
+      fetchAPI();
+    }
+  });
 
 
   return (
@@ -36,15 +55,13 @@ export default function Contest() {
                 Contests 
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Lorem Ipsum and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+              Welcome {user}!
             </Typography>
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
-          <List />
+          <List contests={contests} username={user}/>
         </Container>
       </main>
       {/* Footer */}
