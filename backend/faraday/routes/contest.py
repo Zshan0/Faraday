@@ -4,9 +4,20 @@ from flask_pymongo import PyMongo
 import flask
 from faraday.config import Parameters as PARAMS
 from faraday import db
+from faraday.api import get_price
+from datetime import datetime
 
 contest = Blueprint("contest", __name__)
 
+def calc_profit(cash, holdings):
+    worth = 0
+    for holding in holdings:
+        price = get_price(holding, datetime.now().timestamp())
+        worth += price * holdings[holding]
+    
+    profit = (cash + worth) - PARAMS.DEFAULT_CASH
+    return profit, worth
+    
 
 @contest.route('/contest/add', methods=["POST"])
 def add_contest():
@@ -33,11 +44,36 @@ def fetch_contests():
     ret_contests = []
     for contest in contests:
         ret_contests.append({
-          "contest_id": contest["contest_id"],
-          "name": contest["name"],
-          "start": contest["start"],
-          "end": contest["end"],
-          "participants": len(contest["rankings"])
+            "contest_id": contest["contest_id"],
+            "name": contest["name"],
+            "start": contest["start"],
+            "end": contest["end"],
+            "participants": len(contest["rankings"])
         })
-
     return flask.jsonify(success=True, message=ret_contests)
+
+
+@contest.route('/contest/fetch/<contest_id>', methods=["GET"])
+def fetch_one_contest(contest_id):
+    contest = db.contests.find_one({'contest_id': contest_id})
+    ranks = []
+    for username in contest["rankings"]:
+        user = db.users.find_one({"username": username})
+        profit, worth = calc_profit(user["cash"], user["holdings"])
+        ranks.append({
+            "username": username,
+            "profit": profit,
+            "net_asset": worth,
+            "cash": user["cash"],
+            "return": (profit / PARAMS.DEFAULT_CASH) * 100
+        })
+        
+    ret_contest = {
+        "contest_id": contest["contest_id"],
+        "name": contest["name"],
+        "start": contest["start"],
+        "end": contest["end"],
+        "participants": len(contest["rankings"]),
+        "rankings": ranks
+    }
+    return flask.jsonify(success=True, message=ret_contest)

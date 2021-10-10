@@ -43,6 +43,9 @@ def get_stock(symbol, start, end, interval):
         "volume": volume
     }
 
+def get_price_from_api(symbol, end):
+    pass
+
 
 def get_price(symbol, end):
     symbol = symbol+".NS"
@@ -57,3 +60,7 @@ def get_price(symbol, end):
     res = res.json()
     close = res["chart"]["result"][0]["indicators"]["quote"][0]["close"]
     return close[-1]
+
+
+def update_stock_prices():
+    pass
