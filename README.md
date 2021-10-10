@@ -6,8 +6,10 @@ Faraday is an educational website for financial markets where people can learn a
 
 ### Why Faraday?
 
-Currently, India offers, at best, a 6% return on fixed deposits to the bank, which is hardly able to beat the inflation rate of 4.9%. Considering we never know what is going to happen to the world, one must learn how to take advantage of free market to beat inflation. It is important to note that stock markets effect more people than only the ones actively parttaking in it. Each and every common man, woman and child are effected with ups and downs in the market, since it directly effects the countries, and the world's economy. 
+Currently, India offers, at best, a 6% return on fixed deposits to the bank, which is hardly able to beat the inflation rate of 4.9%. Considering we never know what is going to happen to the world, one must learn how to take advantage of free market to beat inflation. It is important to note that stock markets effect more people than only the ones actively parttaking in it. Each and every common man, woman and child are effected with ups and downs in the market, since it directly effects the countries, and the world's economy.
+
 We believe that every individual should have the right to education, and in the current world, it is important all of us are educated on how financial markets work. Freedtom to parttake in financial markets cannot be gauranteed by simply making the stock market free for all, since there are numerous sociological reasons why people still do not freely participate in it. Getting into the market poses a high risk to a beginner, and these losses unequally effect the poorer, since it is harder for them to recover from it. Such scenarios have led to a society where stock markets are seen wtih a skeptical eye, and often people would rather not take the risk.
+
 This is what we have worked together to change. We hope to provide a platform to attract beginners and experts, allowing them to participate in challenges and get used to the market's craze. They get to get their hands dirty with virtual money, and they get to learn with their friends! We have tried to eliminate financial and sociological factors which effected people's ability to get education and participate in the stock market, and we hope people are more comfortable wtih stock market as they learn more!
 
 However, Faraday is a lot more than a learning platform, as we ascribe below.
@@ -72,8 +74,4 @@ This version supports:
 - API access
     - We also provide real-time as well as historical data via our API
     - We also allow participants to buy and sell stocks via API itself
-    - This allows users to create and trade using algorithms
-
-
-
-<img src="https://cdn.discordapp.com/attachments/896445146986577960/896779887329820712/unknown.png" alt="drawing" height="20%"/>
+    - This allows users to create and trade using algorithm
