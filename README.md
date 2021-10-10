@@ -2,7 +2,7 @@
 
 Faraday is an educational website for financial markets where people can learn about stocks and practice on an online simulator. They can also participate in real-time trading contests as well as on modified or historical data.
 
-![img](./stonk1.png)
+<img src="./stonk1.png" alt="drawing" width="70%" class="center"/>
 
 ### Why Faraday?
 
@@ -35,7 +35,7 @@ Faraday's main aim is to provide a real time stock market simulator with virtual
     A potential add-on to this can be SDK's in the most used programming languages like Python, Javascript, Go etc.
     
 
-![img](./stonk2.png)
+<img src="./stonk2.png" alt="drawing" width="70%"/>
 
 ## Implementation
 
