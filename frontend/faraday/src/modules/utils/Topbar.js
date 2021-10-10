@@ -5,6 +5,11 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+import { useHistory } from "react-router-dom"
+
+import Learning from '../learning/Learning';
+import Contest from '../contest/Contest';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -40,10 +45,14 @@ function a11yProps(index) {
 }
 
 export default function Topbar() {
+  let history = useHistory();
   const [value, setValue] = React.useState(0);
+  const urlList = ['learning', 'contests']
 
   const handleChange = (event, newValue) => {
+    console.log(newValue);
     setValue(newValue);
+    history.push(urlList[newValue]);
   };
 
   // TabPanel is where the content should go into.
