@@ -17,6 +17,7 @@ import Contest from "./modules/contest/Contest.js";
 import Mathematics from "./modules/learning/Mathematics.js";
 import WarrenBuffet from "./modules/contest/WarrenBuffet.js";
 import TradingPsych from "./modules/learning/TradingPsychology.js";
+import Quant from "./modules/learning/Quant.js";
 
 const App = () => {
   const [store, setStore] = useState({
@@ -36,6 +37,7 @@ const App = () => {
         <Route exact path="/home/page/candleplots" component={CandlePlots} />
         <Route exact path="/home/page/tradingpsych" component={TradingPsych} />
         <Route exact path="/home/page/mathematics" component={Mathematics} />
+        <Route exact path="/home/page/quant" component={Quant} />
         <Route exact path="/home/contests/1" component={WarrenBuffet} />
       </div>
       </Context.Provider>

@@ -1,7 +1,7 @@
 export async function getLeaderBoard({contestName}){
     return [
         {
-            "username": "Warren Buffet",
+            "username": "Arjo",
             "profit": 1000,
             "netAsset": 2000,
             "cash": 1000,
@@ -9,12 +9,12 @@ export async function getLeaderBoard({contestName}){
             "portfolio": 1000
         },
         {
-            "username": "Buffet",
-            "profit": 1000,
-            "netAsset": 2000,
+            "username": "zshan",
+            "profit": 0,
+            "netAsset": 1000,
             "cash": 1000,
-            "return": 1000,
-            "portfolio": 1000
+            "return": 0,
+            "portfolio": 0 
         }
     ];
 }

@@ -24,7 +24,7 @@ const cards = [
     {
         "title": "Trading Psychology",
         "image": "https://qph.fs.quoracdn.net/main-qimg-13d0a1107423fce4a2029892dae8ffbc",
-        "desc": "This is a short description for the module.",
+        "desc": "Understand the minds behind the great trading methodology",
         "url": "/home/page/tradingpsych"
     },
     {
@@ -32,6 +32,12 @@ const cards = [
       "image": "https://miro.medium.com/max/1400/0*iiTB1dEpyQXWUgxA",
       "desc": "Thoughts about how different professions approach an algorithm",
       "url": "/home/page/mathematics"
+    },
+    {
+      "title": "Quantitative Analysis",
+      "image": "https://onlinelibrary.wiley.com/cms/asset/00c0c480-3493-4f8e-ae12-db482be391f5/cb1912-fig-0001-m.jpg",
+      "desc": "",
+      "url": "/home/page/quant"
     },
 ];
 
