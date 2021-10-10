@@ -19,13 +19,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 const Login = () => {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState("");
     const {store, setStore} = useContext(Context);
 
     const userData = {
-        email,
+        username,
         password
     };
     
@@ -33,12 +33,12 @@ const Login = () => {
     async function pushData() {
         try {
             let res = await axios.post("http://localhost:5000/users/login", {
-                email: userData.email,
+                username: userData.username,
                 password: userData.password
             });
             if (res.status == 200) {
                 setErrors({});
-                setEmail("");
+                setUsername("");
                 setPassword("");
                 localStorage.setItem("token", res.data.token);
                 setStore({
@@ -46,8 +46,8 @@ const Login = () => {
                     user: res.data.user
                 });
                 console.log()
-            } else if (res.data.email) {
-                setErrors({ email: res.data.email });
+            } else if (res.data.username) {
+                setErrors({ username: res.data.username });
             } else if (res.data.email) {
                 setErrors({ password: res.data.password });
             } else {
@@ -62,7 +62,7 @@ const Login = () => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
-        email: data.get('email'),
+        username: data.get('username'),
         password: data.get('password'),
         });
     }
@@ -90,10 +90,10 @@ const Login = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="username"
+                label="User Name"
+                name="username"
+                autoComplete="username"
                 autoFocus
               />
               <TextField

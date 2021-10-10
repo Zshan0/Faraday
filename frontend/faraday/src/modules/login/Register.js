@@ -18,6 +18,7 @@ const Register = () => {
     const [fname, setFName] = useState("");
     const [lname, setLName] = useState("");
     const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const {store, setStore} = useContext(Context);
@@ -26,6 +27,7 @@ const Register = () => {
         fname,
         lname,
         email,
+        username,
         password
     };
 
@@ -93,6 +95,16 @@ const Register = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
                 />
               </Grid>
               <Grid item xs={12}>

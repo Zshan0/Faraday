@@ -9,14 +9,15 @@ import {
   Link
 } from "react-router-dom";
 
-
 import Learning from "./modules/learning/Learning.js";
 import Login from "./modules/login/Login.js";
 import Register from "./modules/login/Register.js"
+import CandlePlots from "./modules/learning/CandlePlots.js"
+import Contest from "./modules/contest/Contest.js";
 
 const App = () => {
   const [store, setStore] = useState({
-    user: undefined
+    user: undefined,
   });
 
   useEffect(() => {
@@ -55,8 +56,10 @@ const App = () => {
           <p>Hello World</p>
         </Route>
         <Route exact path="/learning" component={Learning} />
+        <Route exact path="/contests" component={Contest} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/page/candleplots" component={CandlePlots} />
       </div>
       </Context.Provider>
     </Router>
