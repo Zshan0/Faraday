@@ -1,14 +1,14 @@
 # Faraday
 
-Faraday is an educational website for financial markets where people can learn about stocks and practice on an online simulator. They can also participate in real-time trading contests as well as on modified or historical data.
+Faraday is an educational website for financial markets where people can learn about stocks and practice on an online simulator. They can also participate in real-time trading contests as well as on modified or historical data. Faraday allows people from all walks of life to learn and experiment with financial markets, try figuring out strategies on influential days and learn with their friends. 
 
 <img src="https://cdn.discordapp.com/attachments/896445146986577960/896778637578227803/stonk1.png" alt="drawing" width="70%" class="center"/>
 
 ### Why Faraday?
 
-We believe that every individual should have a broad understanding of how financial markets work, due to their heavy influence on our day-to-day lives. However, getting started with stock market poses a high entry barrier to beginners, especially because they have to put real money on the line. This leads to a lot of reluctance towards entering the domain. And this is exactly what we are determined to change,
-
-We wish to provide a platform to attract beginners by allowing them to participate in the markets' craze and get their hands dirty with virtual money. Thus, they need not put their real money on the line and still be able to learn.
+Currently, India offers, at best, a 6% return on fixed deposits to the bank, which is hardly able to beat the inflation rate of 4.9%. Considering we never know what is going to happen to the world, one must learn how to take advantage of free market to beat inflation. It is important to note that stock markets effect more people than only the ones actively parttaking in it. Each and every common man, woman and child are effected with ups and downs in the market, since it directly effects the countries, and the world's economy. 
+We believe that every individual should have the right to education, and in the current world, it is important all of us are educated on how financial markets work. Freedtom to parttake in financial markets cannot be gauranteed by simply making the stock market free for all, since there are numerous sociological reasons why people still do not freely participate in it. Getting into the market poses a high risk to a beginner, and these losses unequally effect the poorer, since it is harder for them to recover from it. Such scenarios have led to a society where stock markets are seen wtih a skeptical eye, and often people would rather not take the risk.
+This is what we have worked together to change. We hope to provide a platform to attract beginners and experts, allowing them to participate in challenges and get used to the market's craze. They get to get their hands dirty with virtual money, and they get to learn with their friends! We have tried to eliminate financial and sociological factors which effected people's ability to get education and participate in the stock market, and we hope people are more comfortable wtih stock market as they learn more!
 
 However, Faraday is a lot more than a learning platform, as we ascribe below.
 
@@ -19,7 +19,7 @@ Faraday replied: “What good is a baby?”<br/>
 Or maybe he said: “Soon you will be able to tax it.”
 > 
 
-Faraday's main aim is to provide a real time stock market simulator with virtual money to users so that they can freely get the hang of the stock market's dynamics without worrying about losing money. But it doesn't end here. We have a lot more to provide. 
+Faraday's main aim is to provide a real time stock market simulator with virtual money to users. But it doesn't end here. We have a lot more to provide. 
 
 - Users can start learning modules provided by us to gain further insights into the world of the stock market, from jargon to some common strategies. These modules not only provide high quality notes but also interactive exercises for the  user to be able to judge his understanding of the subject.
 - Simulating only the current market might be a slow learning process and we want to provide the users a wide range of historical scenarios where the market was in dire conditions, for example the 2008 financial crisis, COVID outbreak in March 2019. These will help the user analyze their strategies in the extreme cases also and make necessary modifications to the same. Specific contests can also be designed to get the most out of such such scenarios and historical data.
@@ -57,8 +57,7 @@ There are two major use cases that we provide. The first one is the stock tradin
 
 ### Basic Working Version
 
-As the time for the hackathon was limited, only a basic working version was created.
-
+In this hackathon which lasted only for 24 hours, we have accomplished the below!
 This version supports:
 
 - Learning Modules
@@ -74,5 +73,7 @@ This version supports:
     - We also provide real-time as well as historical data via our API
     - We also allow participants to buy and sell stocks via API itself
     - This allows users to create and trade using algorithms
+
+
 
 <img src="https://cdn.discordapp.com/attachments/896445146986577960/896779887329820712/unknown.png" alt="drawing" height="20%"/>
