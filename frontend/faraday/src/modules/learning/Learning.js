@@ -19,19 +19,19 @@ const cards = [
         "title": "Candle Plots",
         "image": "https://source.unsplash.com/random",
         "desc": "Learn how to read candleplots",
-        "url": "/page/candleplots"
+        "url": "/home/page/candleplots"
     },
     {
         "title": "Trading Psychology",
         "image": "https://source.unsplash.com/random",
         "desc": "This is a short description for the module.",
-        "url": "/page/tradingpsychology"
+        "url": "/home/page/tradingpsychology"
     },
     {
       "title": "Mathematics and Algorithm",
       "image": "https://source.unsplash.com/random",
       "desc": "Thoughts about how different professions approach an algorithm",
-      "url": "/page/mathematics"
+      "url": "/home/page/mathematics"
     },
 ];
 

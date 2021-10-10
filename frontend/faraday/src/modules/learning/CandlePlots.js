@@ -268,7 +268,7 @@ const CandlePlots = () => {
             }
         }
     }
-
+    // console.log(data);
     useEffect(() => {
         fetch(CandleMarkdown)
         .then(res => res.text())

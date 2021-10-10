@@ -47,7 +47,7 @@ function a11yProps(index) {
 export default function Topbar() {
   let history = useHistory();
   const [value, setValue] = React.useState(0);
-  const urlList = ['learning', 'contests']
+  const urlList = ['/home/learning', '/home/contests']
 
   const handleChange = (event, newValue) => {
     console.log(newValue);

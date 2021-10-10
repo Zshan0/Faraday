@@ -61,9 +61,9 @@ const App = () => {
         <Route exact path="/register" component={Register} />
         <Route exact path="/home/learning" component={Learning} />
         <Route exact path="/home/contests" component={Contest} />
-        <Route exact path="/page/candleplots" component={CandlePlots} />
-        <Route exact path="/page/mathematics" component={Mathematics} />
-        <Route exact path="/contests/warrenbuffet" component={WarrenBuffet} />
+        <Route exact path="/home/page/candleplots" component={CandlePlots} />
+        <Route exact path="/home/page/mathematics" component={Mathematics} />
+        <Route exact path="/home/contests/warrenbuffet" component={WarrenBuffet} />
       </div>
       </Context.Provider>
     </Router>
