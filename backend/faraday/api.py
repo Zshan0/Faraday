@@ -49,17 +49,20 @@ def get_stock(symbol, start, end, interval):
 def get_price(symbol, end):
 
     try:
-        symbol = symbol+".NS"
-        base_url = "https://query1.finance.yahoo.com/v8/finance/chart/"
-        url = base_url+symbol
-        parameters = {}
-        start = end - 1000
-        parameters["period1"] = start
-        parameters["period2"] = end
-        parameters["interval"] = "1m"
-        res = requests.get(url, headers=headers, params=parameters)
-        res = res.json()
-        close = res["chart"]["result"][0]["indicators"]["quote"][0]["close"]
+        close = []
+        while len(close) <= 0:
+            symbol = symbol+".NS"
+            base_url = "https://query1.finance.yahoo.com/v8/finance/chart/"
+            url = base_url+symbol
+            parameters = {}
+            start = end - 1000
+            parameters["period1"] = start
+            parameters["period2"] = end
+            parameters["interval"] = "1m"
+            res = requests.get(url, headers=headers, params=parameters)
+            res = res.json()
+            close = res["chart"]["result"][0]["indicators"]["quote"][0]["close"]
+            end = 
         return close[-1]
     except:
         return False
