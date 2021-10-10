@@ -12,9 +12,17 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Context from "../../Context.js"
 
+import { useHistory } from "react-router-dom"
 const theme = createTheme();
 
+const validateRegister = async (props) => {
+  return {
+    'response': 'success'
+  }
+}
+
 const Register = () => {
+    let history = useHistory();
     const [fname, setFName] = useState("");
     const [lname, setLName] = useState("");
     const [email, setEmail] = useState("");
@@ -36,14 +44,23 @@ const Register = () => {
     }
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
+    const obj = {
+      username: data.get('username'),
       password: data.get('password'),
-    });
+    };
+    // Send data to the backend and await for the query
+    const responseData = await validateRegister(obj);
+    if(responseData.response == 'success') {
+      // add props to the details or use context or local storage to keep track of user
+      history.push('home/learning');
+    } else if(responseData.response == 'used email') {
+      console.log("Email used, try again");
+    } else {
+      console.log("error occured, please try again");
+    }
   };
 
   return (

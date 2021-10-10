@@ -16,9 +16,18 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { useHistory } from "react-router-dom"
+
 const theme = createTheme();
 
+const validateLogin = async (props) => {
+  return {
+    'response': 'success'
+  }
+}
+
 const Login = () => {
+    let history = useHistory();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState("");
@@ -58,13 +67,25 @@ const Login = () => {
         }
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-        username: data.get('username'),
-        password: data.get('password'),
-        });
+        const obj = {
+          username: data.get('username'),
+          password: data.get('password'),
+        };
+        // Send data to the backend and await for the query
+        const responseData = await validateLogin(obj);
+        if(responseData.response == 'success') {
+          // add props to the details or use context or local storage to keep track of user
+          history.push('home/learning');
+        } else if(responseData.response == 'not found') {
+          console.log("account not found");
+        } else if(responseData.response == 'incorrect password') {
+          console.log("incorrect password");
+        } else {
+          console.log("error occured, please try again");
+        }
     }
 
     return (
