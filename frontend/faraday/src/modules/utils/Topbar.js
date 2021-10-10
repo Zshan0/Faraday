@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -54,12 +55,6 @@ export default function Topbar() {
           <Tab label="Contests" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      {/* <TabPanel value={value} index={0}> 
-          Welcome to Learning!
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-          Welcome to Contests!
-      </TabPanel> */}
     </Box>
   );
 }

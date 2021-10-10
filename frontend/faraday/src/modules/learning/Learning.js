@@ -18,7 +18,7 @@ const cards = [
     {
         "title": "Candle Plots",
         "image": "https://source.unsplash.com/random",
-        "desc": "This is a short description for the module.",
+        "desc": "Learn how to read candleplots",
         "url": "/page/candleplots"
     },
     {
@@ -27,6 +27,12 @@ const cards = [
         "desc": "This is a short description for the module.",
         "url": "/page/tradingpsychology"
     },
+    {
+      "title": "Mathematics and Algorithm",
+      "image": "https://source.unsplash.com/random",
+      "desc": "Thoughts about how different professions approach an algorithm",
+      "url": "/page/mathematics"
+    },
 ];
 
 const theme = createTheme();
@@ -34,19 +40,6 @@ const theme = createTheme();
 export default function Learning() {
 
   const {store, setStore} = useContext(Context);
-  const [load, setLoad] = useState(false);
-
-  const handleClick = (card) => {
-    console.log("handleClick", card);
-    setLoad(true);
-    setStore({ ...store, title:card.title})
-  }
-
-  const callPage = () => {
-    if (load) {
-      return <Redirect to='/page'></Redirect>
-    }
-  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -55,26 +48,13 @@ export default function Learning() {
              variant="dense"
              sx={{ justifyContent: 'space-between' }}
          >
-             {cards.map((card) => (
-             <Link
-                 color="inherit"
-                 noWrap
-                 key={card.title}
-                 variant="body2"
-                 href={card.url}
-                 sx={{ p: 1, flexShrink: 0 }}
-             >
-                 {card.title}
-             </Link>
-             ))}
          </Toolbar>
       <main>
         {/* Hero unit */}
         <Box
           sx={{
             bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
+            pb: 4,
           }}
         >
           <Container maxWidth="sm">
@@ -88,13 +68,11 @@ export default function Learning() {
                 Learning Modules
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Lorem Ipsum and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+              Below is a collection which will help you learn all about Stock Trading and the Math and CS involved.
             </Typography>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 1 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
@@ -105,10 +83,6 @@ export default function Learning() {
                   <CardActionArea href={card.url}>
                   <CardMedia
                     component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
                     image={card.image}
                     alt="random"
                   />
@@ -139,7 +113,6 @@ export default function Learning() {
         </Typography>
       </Box>
       <div>
-        {callPage()}
       </div>
     </ThemeProvider>
   );
