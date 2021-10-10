@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react"
 import Context from "../../Context.js"
 import ReactMarkdown from 'react-markdown'
-import CandleMarkdown from './candleplots.md'
+import MathMarkdown from './mathematics.md'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container'
@@ -250,7 +250,7 @@ const data = [{
   },
 ]
 
-const CandlePlots = () => {
+const Mathematics = () => {
     const { store, setStore } = useContext(Context);
     const [md, setMd] = useState(null)
     const series = [{ data: data }]
@@ -270,7 +270,7 @@ const CandlePlots = () => {
     }
 
     useEffect(() => {
-        fetch(CandleMarkdown)
+        fetch(MathMarkdown)
         .then(res => res.text())
         .then(text => setMd(text))
     }, [])
@@ -280,7 +280,7 @@ const CandlePlots = () => {
             <Container sx={{ py: 1 }} fixed>
                 <Box sx={{ m: 2 }}>
                     <Typography variant="h2">
-                        Candle Plots
+                        Mathematics and Algorithms
                     </Typography>
                     <ReactApexCharts options={options} series={series} type="candlestick" height={350} />
                     <ReactMarkdown>
@@ -292,4 +292,4 @@ const CandlePlots = () => {
     )
 }
 
-export default CandlePlots
+export default Mathematics

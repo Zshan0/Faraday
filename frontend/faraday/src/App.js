@@ -14,6 +14,7 @@ import Login from "./modules/login/Login.js";
 import Register from "./modules/login/Register.js"
 import CandlePlots from "./modules/learning/CandlePlots.js"
 import Contest from "./modules/contest/Contest.js";
+import Mathematics from "./modules/learning/Mathematics.js";
 
 const App = () => {
   const [store, setStore] = useState({
@@ -60,6 +61,7 @@ const App = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/page/candleplots" component={CandlePlots} />
+        <Route exact path="/page/mathematics" component={Mathematics} />
       </div>
       </Context.Provider>
     </Router>
