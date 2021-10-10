@@ -9,15 +9,16 @@ from datetime import datetime
 
 contest = Blueprint("contest", __name__)
 
+
 def calc_profit(cash, holdings):
     worth = 0
     for holding in holdings:
-        price = get_price(holding, datetime.now().timestamp())
+        price = get_price(holding, "1m")["close"]
         worth += price * holdings[holding]
-    
+
     profit = (cash + worth) - PARAMS.DEFAULT_CASH
     return profit, worth
-    
+
 
 @contest.route('/contest/add', methods=["POST"])
 def add_contest():
@@ -55,19 +56,32 @@ def fetch_contests():
 
 @contest.route('/contest/fetch/<contest_id>', methods=["GET"])
 def fetch_one_contest(contest_id):
+    contest_id = int(contest_id)
     contest = db.contests.find_one({'contest_id': contest_id})
     ranks = []
     for username in contest["rankings"]:
         user = db.users.find_one({"username": username})
-        profit, worth = calc_profit(user["cash"], user["holdings"])
+        user_contest = [cont for cont in user["contests"]
+                        if cont["contest_id"] == contest_id]
+
+        if not len(user_contest):
+            continue
+
+        user_contest = user_contest[0]
+
+        profit, worth = calc_profit(
+            user_contest["cash"], user_contest["holdings"])
         ranks.append({
             "username": username,
             "profit": profit,
-            "net_asset": worth,
-            "cash": user["cash"],
+            "portfolio": worth,
+            "net_asset": profit + PARAMS.DEFAULT_CASH,
+            "cash": user_contest["cash"],
             "return": (profit / PARAMS.DEFAULT_CASH) * 100
         })
-        
+
+        ranks.sort(key=lambda x: x["profit"])
+
     ret_contest = {
         "contest_id": contest["contest_id"],
         "name": contest["name"],
