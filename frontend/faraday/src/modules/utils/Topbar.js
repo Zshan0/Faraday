@@ -64,12 +64,6 @@ export default function Topbar() {
           <Tab label="Contests" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        <Learning />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <Contest />
-      </TabPanel>
     </Box>
   );
 }
