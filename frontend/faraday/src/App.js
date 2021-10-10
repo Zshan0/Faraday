@@ -56,10 +56,10 @@ const App = () => {
         <Route exact path="/">
           <p>Hello World</p>
         </Route>
-        <Route exact path="/learning" component={Learning} />
-        <Route exact path="/contests" component={Contest} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/learning" component={Learning} />
+        <Route exact path="/contests" component={Contest} />
         <Route exact path="/page/candleplots" component={CandlePlots} />
         <Route exact path="/page/mathematics" component={Mathematics} />
       </div>
